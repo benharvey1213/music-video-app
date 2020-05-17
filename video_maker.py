@@ -10,7 +10,7 @@ audio_path = sys.argv[2]
 logo_path = sys.argv[3]
 export_path = sys.argv[4]
 
-full_path = export_path + '\\' + time.strftime("%Y%m%d-%H%M%S") + '.mp4'
+full_path = export_path + '\\' + time.strftime(f"%Y%m%d-%H%M%S") + '.mp4'
 
 def blur(image):
     return gaussian(image.astype(float), sigma=5)
