@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Beat Video App</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/popper.js/dist/popper.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+
+<body>
+    <div id="appContainer" class="container">
+
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-title">
+                        <div class="d-flex justify-content-between">
+                            <h6>Audio File</h6>
+                            <img id="audioDefault" class="cog" src="./cog.png">
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        <!-- <input value="C:\Users\benha\Desktop\Electron\beat-video-app\Beats\Beat80.wav" type="file" name="file" id="file1" class="inputfile" accept=".wav, .mp3" /> -->
+                        <label id="audioButton" class="btn btn-primary" for="file1">Choose a file</label>
+                        <span class="fileName"><i id="audioFile">No file chosen</i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-title">
+                        <div class="d-flex justify-content-between">
+                            <h6>Video File</h6>
+                            <img id="videoDefault" class="cog" src="./cog.png">
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        <!-- <input value="C:\Users\benha\Desktop\Electron\beat-video-app\Videos\video5.mp4" type="file" name="file" id="file2" class="inputfile" accept=".mp4" /> -->
+                        <label id="videoButton" class="btn btn-primary" for="file2">Choose a file</label>
+                        <span class="fileName"><i id="videoFile">No file chosen</i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-title">
+                        <div class="d-flex justify-content-between">
+                            <h6>Overlay Image</h6>
+                            <img id="logoDefault" class="cog" src="./cog.png">
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        <!-- <input value="C:\Users\benha\Desktop\Electron\beat-video-app\Static\logo.png" type="file" name="file" id="file3" class="inputfile" accept=".png" /> -->
+                        <label id="logoButton" class="btn btn-primary" for="file3">Choose a file</label>
+                        <span class="fileName"><i id="logoFile">No file chosen</i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-title">
+                        <div class="d-flex justify-content-between">
+                            <h6>Output Folder</h6>
+                            <img id="outputDefault" class="cog" src="./cog.png">
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        <!-- <input value="C:\Users\benha\Desktop\Electron\beat-video-app\Static\logo.png" webkitdirectory type="file" name="file" id="file4" class="inputfile" accept=".png" /> -->
+                        <label id="outputButton" class="btn btn-primary" for="file4">Choose a folder</label>
+                        <span class="fileName"><i id="outputFolder">No folder chosen</i></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <button id="start" class="btn btn-primary">Start</button>
+
+    </div>
+
+    <script src="view.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+#appContainer {
+    margin-top: 20px;
+}
+
+.card {
+    padding: 10px;
+    height: 100%;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+#start {
+    /* margin-top: 10px; */
+    width: 100%;
+    /* font-size: 1.5em; */
+}
+
+.fileName {
+    margin-left: 5px;
+}
+
+.row {
+    margin-bottom: 30px;
+}
+
+.cog {
+    height: 20px;
+    cursor: pointer;
+}
