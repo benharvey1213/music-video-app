@@ -23,6 +23,12 @@ const outputDefault = document.getElementById('outputDefault');
 const preview = document.getElementById('previewImage');
 const imgSpinner = document.getElementById('spinner2');
 const imgPreview = document.getElementById('imagePreviewDiv');
+const exportText = document.getElementById('startText');
+const imageDiv = document.getElementById('imageDiv');
+const innerImage = document.getElementById('innerImage');
+
+const previewPercent = document.getElementById('spinner2Percent');
+const progressInner = document.getElementById('progressInner');
 
 const audio = document.getElementById('audioController');
 
@@ -37,6 +43,8 @@ var outputPath;
 
 btnClick.disabled = true;
 // preview.hidden = true;
+imgSpinner.hidden = true;
+previewPercent.hidden = true;
 
 function updateStartButton() {
     if (audioFile && videoFile && logoFile && outputPath) {
@@ -47,6 +55,7 @@ function updateStartButton() {
 }
 
 function updatePreview() {
+    imgSpinner.hidden = false;
     if (videoFile && logoFile) {
         let args = {
             'video': videoFile,
@@ -54,8 +63,9 @@ function updatePreview() {
         }
         preview.src = ''
         imgSpinner.hidden = false;
+        previewPercent.hidden = false;
+        previewPercent.textContent = '0%';
         ipcRenderer.send('getPreview', args);
-        // imgPreview.style.display = 'block';
     }
 }
 
@@ -85,32 +95,37 @@ if (settings['defaultOutputPath'] != '') {
 updateStartButton();
 
 ipcRenderer.on('vidDone', function() {
-    console.log('got vid done')
-    audioFile = null;
-    videoFile = null;
-    document.getElementById('logoFile').textContent = 'No file chosen';
-    document.getElementById('outputFolder').textContent = 'No folder chosen';
     btnClick.disabled = false;
     audioBtn.disabled = false;
     videoBtn.disabled = false;
     logoBtn.disabled = false;
     outputBtn.disabled = false;
+    progressInner.style.width = '0%';
+    // progressInner.textContent = '0%';
+    exportText.textContent = 'Export';
     document.getElementById('spinner').style.visibility = 'hidden';
 });
 
 ipcRenderer.on('preview', function(event, args) {
-    console.log(args)
-
+    previewPercent.hidden = true;
     var gif = new Image();
     gif.src = args;
     gif.onload = function() {
         preview.src = gif.src;
-        // preview.hidden = false;
         imgSpinner.hidden = true;
     }
 
+});
 
+ipcRenderer.on('previewPercent', function(event, percent) {
+    previewPercent.hidden = false;
+    previewPercent.textContent = percent + '%';
+});
 
+ipcRenderer.on('exportPercent', function(event, percent) {
+    console.log(percent)
+    progressInner.style.width = percent + '%';
+    // progressInner.textContent = percent + '%';
 });
 
 btnClick.addEventListener('click', function() {
@@ -128,6 +143,7 @@ btnClick.addEventListener('click', function() {
         videoBtn.disabled = true;
         logoBtn.disabled = true;
         outputBtn.disabled = true;
+        exportText.textContent = 'Exporting';
 
         document.getElementById('spinner').style.visibility = 'visible';
     }
@@ -272,3 +288,30 @@ document.getElementById('audioButton').addEventListener('drop', function(e) {
 
     console.log('reeeeeeeeee')
 });
+
+imageDiv.ondragover = () => {
+    return false;
+}
+
+imageDiv.ondragenter = () => {
+    // imageDiv.style.backgroundColor = '#b3b3b3';
+    if (innerImage.style.display != 'block') {
+        innerImage.style.display = 'block';
+    }
+
+}
+
+imageDiv.ondragleave = () => {
+    if (innerImage.style.display != 'none') {
+        innerImage.style.display = 'none';
+    }
+}
+
+imageDiv.ondrop = (event) => {
+    // innerImage.style.display = 'none';
+    // console.log('dropped')
+    event.preventDefault();
+    console.log(event)
+        // console.log(event.dataTransfer.getData('text'))
+
+}

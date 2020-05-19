@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="./styles.css">
     <script src="./node_modules/jquery/dist/jquery.js"></script>
-    <script src="./node_modules/popper.js/dist/popper.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
 </head>
 
@@ -82,11 +81,15 @@
                 <div class="row">
                     <div id="imagePreviewDiv" class="container">
                         <div id="imageDiv" class="row align-items-center">
+                            <div id="innerImage"></div>
+
                             <div class="col"></div>
                             <div class="col">
+                                <span id="spinner2Percent">0%</span>
                                 <div id="spinner2" class="spinner-border text-secondary"></div>
                             </div>
                             <div class="col"></div>
+
 
                             <img id="previewImage">
                         </div>
@@ -95,22 +98,35 @@
                 <div class="row">
                     <audio id="audioController" controls></audio>
                 </div>
+
                 <div class="row fill-height flex-grow-1"></div>
                 <div class="row">
                     <button id="start" class="btn btn-primary">
-                        <div class="d-flex justify-content-between">
+                        <div id="progressInner" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
+                        <div id="startContent" class="d-flex justify-content-between">
                             <div id="spinner" class="spinner-border"></div>
-                            <span id="startText">Export</span>
+                            <div id="startText">Export</div>
                             <div class="spinner-border" style="visibility: hidden;"></div>
                         </div>
+                        
                     </button>
                 </div>
+
+
+
             </div>
+
+
         </div>
+
+        <!-- <div class="progress">
+            <div id="progressInner" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;">0%</div>
+        </div> -->
 
 
 
     </div>
+
 
     <script src="view.js"></script>
 

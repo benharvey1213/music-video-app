@@ -9,13 +9,15 @@
 
 #appContainer {
     margin-top: 20px;
+    /* padding-left: 20px;
+    padding-right: 20px; */
 }
 
 .card {
     padding: 10px;
     height: 100%;
     width: 100%;
-    margin-left: 15px;
+    /* margin-left: 15px; */
     margin-right: 15px;
     margin-bottom: 20px;
 }
@@ -37,16 +39,22 @@
     /* margin-top: 10px; */
     width: 100%;
     padding: 10px;
+    /* padding: 0; */
     font-size: 1.2em;
     margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    /* height: 50px; */
+    position: relative;
 }
+
+
+/* #startText {
+    margin: 10px;
+} */
 
 .fileName {
     margin-left: 5px;
-}
-
-.row {
-    /* margin-bottom: 30px; */
 }
 
 .cog {
@@ -96,7 +104,29 @@ audio {
     margin-bottom: none;
 }
 
+#innerImage {
+    margin: 10px;
+    height: 180px;
+    width: 100%;
+    border-style: dotted;
+    border-radius: 5px;
+    color: rgb(199, 199, 199);
+    display: none;
+}
 
-/* .fill-height {
+.progress {
+    height: 30px;
+}
+
+#progressInner {
     height: 100%;
-} */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+#startContent {
+    position: relative;
+    z-index: 20;
+}
